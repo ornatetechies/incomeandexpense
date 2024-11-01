@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: incomeexpense
+  datasource:
+    url: jdbc:postgresql://localhost:5432/userdb
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    hostname: Income-Expense-Server
+keyStore:
+  path: keystore.jks
+  password: password
+server:
+  servlet:
+    context-path: /api
+  port: 8081
