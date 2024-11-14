@@ -26,7 +26,12 @@ public class TransactionController {
         TransactionsDto savedTransaction = transactionService.addTrasactions(transactionsDto);
         return ResponseEntity.ok(savedTransaction);
     }
+    @GetMapping
+    public ResponseEntity<List<TransactionsDto>> getTransactions(){
 
+        var transactions = transactionService.getAllTransactions();
+        return ResponseEntity.ok(transactions);
+    }
     @GetMapping("/summary")
     public ResponseEntity<Map<String, BigDecimal>> getTransactionSummary(@RequestParam(required = false) String type){
         TransactionType transactionType = type != null ? TransactionType.fromString(type) : null;

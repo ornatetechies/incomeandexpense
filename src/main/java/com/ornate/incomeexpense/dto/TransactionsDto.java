@@ -4,21 +4,23 @@ import com.ornate.incomeexpense.enums.TransactionType;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 public class TransactionsDto {
-    private Long userId;
+    private Long id;
     private BigDecimal amount;
     private TransactionType type;
     private String description;
-    private LocalDateTime transactionDate;
+    private LocalDate transactionDate;
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public BigDecimal getAmount() {
@@ -28,6 +30,15 @@ public class TransactionsDto {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -36,19 +47,11 @@ public class TransactionsDto {
         this.description = description;
     }
 
-    public LocalDateTime getTransactionDate() {
+    public LocalDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDateTime transactionDate) {
+    public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
-    }
-
-    public TransactionType getType() {
-        return type;
-    }
-
-    public void setType(TransactionType type) {
-        this.type = type;
     }
 }

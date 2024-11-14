@@ -23,9 +23,10 @@ public class TransactionService {
     }
 
     public TransactionsDto addTrasactions(TransactionsDto transactionsDto){
-        Long userId = getAuthUserId();
-        transactionsDto.setUserId(userId);
+
         Transactions transactions = transactionMapper.toEntity(transactionsDto);
+        Long userId = getAuthUserId();
+        transactions.setUserId(userId);
         Transactions saveTransactions = repository.save(transactions);
         return transactionMapper.toDto(saveTransactions);
     }

@@ -1,11 +1,15 @@
 package com.ornate.incomeexpense.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.ornate.incomeexpense.config.LocalDateDeserializer;
 import com.ornate.incomeexpense.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -29,14 +33,9 @@ public class Transactions {
     private String description;
 
     @Column(nullable = false)
-    private LocalDateTime transactionDate;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate transactionDate;
 
-    @PrePersist
-    protected void onCreate(){
-        if (transactionDate == null){
-            transactionDate = LocalDateTime.now();
-        }
-    }
 
     public Long getId() {
         return id;
@@ -78,11 +77,11 @@ public class Transactions {
         this.description = description;
     }
 
-    public LocalDateTime getTransactionDate() {
+    public LocalDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDateTime transactionDate) {
+    public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
 }
