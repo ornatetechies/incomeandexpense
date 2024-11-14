@@ -27,3 +27,15 @@ server:
   servlet:
     context-path: /api
   port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
